@@ -10,8 +10,8 @@ import { Render, GlossaryTooltip } from "~/components";
 
 Durable Objects limits are the same as [Workers Limits](/workers/platform/limits/), as well as the following limits that are specific to Durable Objects:
 
-| Feature                                  | Limit for class with key-value storage backend                   | Limit for class with SQLite storage backend [^1] |
-| ---------------------------------        | ---------------------------------------------------------------- | ----------------------------------------------- |
+| Feature                                  | Limit for class with key-value storage backend                   | Limit for class with SQLite storage backend [^1]                 |
+| ---------------------------------        | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
 | Number of Objects                        | Unlimited (within an account or of a given class)                | Unlimited (within an account or of a given class)                |
 | Maximum Durable Object namespaces        | 500 (identical to the [script limit](/workers/platform/limits/)) | 500 (identical to the [script limit](/workers/platform/limits/)) |
 | Storage per account                      | 50 GB (can be raised by contacting Cloudflare) [^2]              | 50 GB (can be raised by contacting Cloudflare) [^2]              |
@@ -32,15 +32,15 @@ Durable Objects limits are the same as [Workers Limits](/workers/platform/limits
 
 For Durable Object classes with [SQLite storage backend](/durable-objects/best-practices/access-durable-objects-storage/#sqlite-storage-backend) these SQL limits apply:
 
-| SQL                                                      | Limit |
-| -------------------------------------------------------- | ----- |
-| Maximum number of columns per table                      | 100 |
+| SQL                                                      | Limit                                           |
+| -------------------------------------------------------- | ----------------------------------------------- |
+| Maximum number of columns per table                      | 100                                             |
 | Maximum number of rows per table                         | Unlimited (excluding per-object storage limits) |
-| Maximum string, `BLOB` or table row size                 | 2 MB |
-| Maximum SQL statement length                             | 100 KB  |
-| Maximum bound parameters per query                       | 100 |
-| Maximum arguments per SQL function                       | 32 |
-| Maximum characters (bytes) in a `LIKE` or `GLOB` pattern | 50 bytes |
+| Maximum string, `BLOB` or table row size                 | 2 MB                                            |
+| Maximum SQL statement length                             | 100 KB                                          |
+| Maximum bound parameters per query                       | 100                                             |
+| Maximum arguments per SQL function                       | 32                                              |
+| Maximum characters (bytes) in a `LIKE` or `GLOB` pattern | 50 bytes                                        |
 
 <Render file="limits_increase" product="workers" />
 
