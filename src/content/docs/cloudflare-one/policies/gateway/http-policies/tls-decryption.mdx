@@ -11,6 +11,7 @@ import {
 	Render,
 	TabItem,
 	Tabs,
+	Badge,
 } from "~/components";
 
 Cloudflare Gateway can perform [SSL/TLS decryption](https://www.cloudflare.com/learning/security/what-is-https-inspection/) in order to inspect HTTPS traffic for malware and other security risks.
@@ -40,6 +41,16 @@ Gateway does not support TLS decryption for applications which use:
 - [Mutual TLS (mTLS) authentication](#incompatible-certificates)
 - [ESNI and ECH handshake encryption](#esni-and-ech)
 - [Automatic HTTPS upgrades](#google-chrome-automatic-https-upgrades)
+
+### Non-standard ports <Badge text="Beta" variant="caution" size="small" />
+
+By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you turn on TLS decryption, Gateway will inspect HTTPS traffic through port `443`. To detect HTTP and HTTPS traffic on ports other than `80` and `443`, you can turn on [protocol detection](/cloudflare-one/policies/gateway/network-policies/protocol-detection/):
+
+1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **Settings** > **Network** > **Firewall**.
+2. Turn on **Protocol Detection**.
+3. Under **HTTP inspection ports**, choose _Inspect on all ports_.
+
+Gateway will detect and filter HTTP and HTTPS traffic on any port.
 
 ### Incompatible certificates
 
