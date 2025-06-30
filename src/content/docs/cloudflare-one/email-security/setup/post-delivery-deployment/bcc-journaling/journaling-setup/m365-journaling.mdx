@@ -15,15 +15,7 @@ Before you can [enable Email Security](/cloudflare-one/email-security/setup/post
 
 <Render file="email-security/deployment/m365-gcc" />
 
-## Configure your Microsoft 365 environment
-
-<Render file="email-security/deployment/journaling-connector" />
-
-## Geographic locations
-
-<Render file="email-security/deployment/bcc-table-geographic-locations" />
-
-## Enable Email Security
+## Enable Email Security via the dashboard
 
 To enable Email Security journaling deployment:
 
@@ -36,7 +28,7 @@ To enable Email Security journaling deployment:
 
 ### 1. Integrate with Microsoft 365
 
-To integrate with Microsoft 365:
+To integrate Email Security with Microsoft 365:
 
 1. **Name integration**: Add your integration name, then select **Continue**.
 2. **Authorize integration**:
@@ -70,3 +62,14 @@ To view your connected domains:
 ### 3. Enable logs
 
 <Render file="email-security/enable-logs" />
+
+Now that you have completed your setup on the Zero Trust dashboard, you will have to configure your Microsoft environment to allow messages to be processed.
+
+## Configure your Microsoft 365 environment
+
+<Render file="email-security/deployment/journaling-connector" />
+
+## Geographic locations
+
+<Render file="email-security/deployment/bcc-table-geographic-locations" />
+
