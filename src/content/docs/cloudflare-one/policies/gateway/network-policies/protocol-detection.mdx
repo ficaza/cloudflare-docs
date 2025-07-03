@@ -5,6 +5,8 @@ sidebar:
   order: 2
 ---
 
+import { Badge } from "~/components";
+
 Gateway supports the detection, logging, and filtering of network protocols using packet attributes.
 
 Protocol detection only applies to devices connected to Zero Trust via the WARP client in [Gateway with WARP](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-modes/#gateway-with-warp-default) mode.
@@ -18,9 +20,11 @@ To turn on protocol detection:
 
 You can now use _Detected Protocol_ as a selector in a [Network policy](/cloudflare-one/policies/gateway/network-policies/#detected-protocol).
 
-### HTTP inspection ports
+### Inspect on all ports <Badge text="Beta" variant="caution" size="small" />
 
-By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you turn on [TLS decryption](/cloudflare-one/policies/gateway/http-policies/tls-decryption/), Gateway will inspect HTTPS traffic through port `443`. To detect HTTP and HTTPS traffic on ports other than `80` and `443`, under **HTTP inspection ports**, choose _Inspect on all ports_.
+By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you turn on [TLS decryption](/cloudflare-one/policies/gateway/http-policies/tls-decryption/), Gateway will inspect HTTPS traffic through port `443`.
+
+To detect and inspect HTTP and HTTPS traffic on ports other than `80` and `443`, under **HTTP inspection ports**, choose _Inspect on all ports_.
 
 ## Supported protocols
 

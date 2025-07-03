@@ -44,13 +44,9 @@ Gateway does not support TLS decryption for applications which use:
 
 ### Inspect on all ports <Badge text="Beta" variant="caution" size="small" />
 
-By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you turn on TLS decryption, Gateway will inspect HTTPS traffic through port `443`. To detect HTTP and HTTPS traffic on ports other than `80` and `443`, you can turn on [protocol detection](/cloudflare-one/policies/gateway/network-policies/protocol-detection/):
+By default, Gateway will only inspect HTTP traffic through port `80`. Additionally, if you turn on TLS decryption, Gateway will inspect HTTPS traffic through port `443`.
 
-1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **Settings** > **Network** > **Firewall**.
-2. Turn on **Protocol Detection**.
-3. Under **HTTP inspection ports**, choose _Inspect on all ports_.
-
-Gateway will detect and filter HTTP and HTTPS traffic on any port.
+To detect and inspect HTTP and HTTPS traffic on ports other than `80` and `443`, you can turn on [protocol detection](/cloudflare-one/policies/gateway/network-policies/protocol-detection/) and configure Gateway to [inspect traffic on all ports](/cloudflare-one/policies/gateway/network-policies/protocol-detection/#inspect-on-all-ports).
 
 ### Incompatible certificates
 
