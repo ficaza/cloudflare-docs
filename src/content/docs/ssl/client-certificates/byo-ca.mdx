@@ -64,8 +64,7 @@ Bring your own CA (BYOCA) is especially useful if you already have mTLS implemen
   * Indicate the certificate ID obtained from the previous step.
 
     :::caution
-
-    If no `mtls_certificate_id` is provided, the action will be performed against a Cloudflare Managed CA.
+    If no `mtls_certificate_id` is provided, the action will be performed against the [Cloudflare Managed CA](/ssl/client-certificates/#scope). Also, a single hostname can only be associated with one CA at a time.
     :::
 
 4. (Optional) Since this process is API-only, and hostnames that use your uploaded CA certificate **are not** listed on the dashboard, you can make a [GET request](#list-ca-hostname-associations) to confirm the CA hostname associations.
