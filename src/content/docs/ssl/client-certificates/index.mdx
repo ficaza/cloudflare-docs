@@ -42,6 +42,8 @@ As explained in the [mTLS learning path](/learning-paths/mtls/concepts/), there 
 - [mTLS with API Shield](/api-shield/security/mtls/configure/)
 - [mTLS Workers binding](/workers/runtime-apis/bindings/mtls/)
 
+Apart from the mTLS Workers binding, any of the above implementations can use your own CA instead of the Cloudflare-managed one. Refer to [Bring your own CA](/ssl/client-certificates/byo-ca/).
+
 ### mTLS and Workers
 
 Use the [mTLS Workers binding](/workers/runtime-apis/bindings/mtls/) when you need your worker to present a client certificate to an external service. To authenticate requests from a client to your worker instead, refer to [SSL/TLS > Client certificates](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates/) and the regular [mTLS for application security](/learning-paths/mtls/mtls-app-security/) implementation.
