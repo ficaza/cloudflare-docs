@@ -98,7 +98,7 @@ The client connects to the following IPs to verify connectivity inside of the WA
 
 Because this check happens inside of the tunnel, you do not need to add these IPs and domains to your firewall allowlist. However, since the requests go through Gateway, ensure that they are not blocked by a Gateway HTTP or Network policy.
 
-`connectivity.cloudflareclient.com` is used internally by WARP and should not be used in firewall policies.
+Thought it may be visible in `warp-diag` and other logs, `connectivity.cloudflareclient.com` is used internally by WARP and should not be used in firewall policies.
 
 ## NEL reporting (optional)
 
