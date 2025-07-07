@@ -1,0 +1,33 @@
+---
+pcx_content_type: configuration
+title: https
+---
+
+import { Render } from "~/components"
+
+<Render file="nodejs-compat-howto" />
+
+
+## get
+
+The `get` method performs a GET request to the specified URL and invokes the callback with the response. It's a convenience method that simplifies making HTTP GET requests without manually configuring request options.
+
+```js
+import { get } from 'node:https';
+
+get(new URL('https://docs.cloudflare.com/robots.txt'), (res) => {
+	assert.strictEqual(res.statusCode, 200);
+});
+```
+
+## request
+
+The `request` method creates an HTTP request with customizable options like method, headers, and body. It provides full control over the request configuration and returns a writable stream for sending request data.
+
+```js
+import { request } from 'node:https';
+
+request(new URL('https://docs.cloudflare.com/robots.txt'), { method: 'GET' }, (res) => {
+	assert.strictEqual(res.statusCode, 200);
+});
+```

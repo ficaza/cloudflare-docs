@@ -1,0 +1,87 @@
+---
+pcx_content_type: configuration
+title: http
+---
+
+import { Render } from "~/components"
+
+<Render file="nodejs-compat-howto" />
+
+## ClientRequest
+
+The `ClientRequest` class represents an outgoing HTTP request. It implements a writable stream interface, allowing you to send request data and provides events for monitoring the request lifecycle.
+
+```js
+import { ClientRequest } from 'node:http';
+
+const request = new ClientRequest({
+	method: 'GET',
+	protocol: 'http:',
+	hostname: 'example.com'
+});
+
+request.on('response', (response) => {
+	assert.strictEqual(response.statusCode, 200);
+});
+
+request.end();
+``
+
+## get
+
+The `get` method performs a GET request to the specified URL and invokes the callback with the response. It's a convenience method that simplifies making HTTP GET requests without manually configuring request options.
+
+```js
+import { get } from 'node:http';
+
+get(new URL('https://docs.cloudflare.com/robots.txt'), (res) => {
+	assert.strictEqual(res.statusCode, 200);
+});
+```
+
+## request
+
+The `request` method creates an HTTP request with customizable options like method, headers, and body. It provides full control over the request configuration and returns a writable stream for sending request data.
+
+```js
+import { request } from 'node:http';
+
+request(new URL('http://example.com'), { method: 'GET' }, (res) => {
+	assert.strictEqual(res.statusCode, 200);
+});
+```
+
+## WebSocket
+
+The `WebSocket` class provides a convenient way to establish a WebSocket connection to a server. It simplifies the process of creating and managing WebSocket connections.
+
+```js
+import { WebSocket } from 'node:http';
+
+const ws = new WebSocket('ws://example.com/ws');
+
+ws.on('open', () => {
+	console.log('WebSocket connection opened');
+});
+
+ws.on('message', (data) => {
+	console.log('Received message:', data);
+});
+
+ws.on('close', () => {
+	console.log('WebSocket connection closed');
+});
+```
+
+## OutgoingMessage
+
+The `OutgoingMessage` class represents an HTTP response that is sent to the client. It provides methods for writing response headers and body, as well as for ending the response.
+
+```js
+import { OutgoingMessage } from 'node:http';
+
+const res = new OutgoingMessage();
+res.writeHead(200, { 'Content-Type': 'text/plain' });
+res.write('Hello, World!');
+res.end();
+```
