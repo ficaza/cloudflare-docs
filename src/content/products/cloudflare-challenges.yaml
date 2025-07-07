@@ -7,7 +7,6 @@ product:
   url: /cloudflare-challenges/
   preview_tryout: true
 
-
 meta:
   title: Cloudflare challenges docs
   description: Verify whether a visitor is a real human using a challenge
