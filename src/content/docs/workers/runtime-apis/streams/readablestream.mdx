@@ -47,7 +47,9 @@ let reader = readable.getReader({ mode: 'byob' });
 
   * When `true`, errors in the source `ReadableStream` will no longer abort the destination `WritableStream`. `pipeTo` will return a rejected promise with the error from the source or any error that occurred while aborting the destination.
 
+## ReadableStream with Durable Objects
 
+In a setup where a Durable Object returns a readable stream to a Worker, if the Worker cancels the Durable Object's readable stream, the cancellation propagates to the Durable Object.
 
 ***
 
