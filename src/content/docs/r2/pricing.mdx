@@ -44,7 +44,7 @@ For example:
 
 ### Free tier
 
-You can use the following amount of storage and operations each month for free. The free tier only applies to Standard storage.
+You can use the following amount of storage and operations each month for free.
 
 |                                    | Free                        |
 | ---------------------------------- | --------------------------- |
@@ -52,6 +52,10 @@ You can use the following amount of storage and operations each month for free. 
 | Class A Operations                 | 1 million requests / month  |
 | Class B Operations                 | 10 million requests / month |
 | Egress (data transfer to Internet) | Free [^1]                   |
+
+:::caution
+The free tier only applies to Standard storage, and does not apply to Infrequent Access storage.
+:::
 
 ### Storage usage
 
@@ -116,33 +120,55 @@ To learn about potential cost savings from using R2, refer to the [R2 pricing ca
 
 ## R2 billing examples
 
-### Standard storage example
+### Standard storage example 1
 
-If a user writes 1,000 objects in R2 standard storage for 1 month with an average size of 1 GB and requests each 1,000 times per month, the estimated cost for the month would be:
+If a user writes 1,000 objects in R2 **Standard storage** for 1 month with an average size of 1 GB and requests each 1,000 times per month, the estimated cost for the month would be:
 
-|                    | Usage                                       | Free Tier    | Billable Quantity | Price      |
-| ------------------ | ------------------------------------------- | ------------ | ----------------- | ---------- |
-| Class B Operations | (1,000 objects) \* (1,000 reads per object) | 10 million   | 0                 | $0.00      |
-| Class A Operations | (1,000 objects) \* (1 write per object)     | 1 million    | 0                 | $0.00      |
-| Storage            | (1,000 objects) \* (1 GB per object)        | 10 GB-months | 990 GB-months     | $14.85     |
-| Data retrieval     | (1,000 objects) \* (1 GB per object)        | 0 GB         | None              | $0.00      |
-| **TOTAL**          |                                             |              |                   | **$14.85** |
-|                    |                                             |              |                   |            |
+|                    | Usage                                       | Free Tier    | Billable Quantity | Price       |
+| ------------------ | ------------------------------------------- | ------------ | ----------------- | ----------- |
+| Class B Operations | (1,000 objects) \* (1,000 reads per object) | 10 million   | 0                 | $0.00       |
+| Class A Operations | (1,000 objects) \* (1 write per object)     | 1 million    | 0                 | $0.00       |
+| Storage            | (1,000 objects) \* (1 GB per object)        | 10 GB-months | 990 GB-months     | $14.85      |
+| Data retrieval     | (1,000 objects) \* (1 GB per object)        | 0 GB         | None              | $0.00       |
+| **TOTAL**          |                                             |              |                   | **$14.85**  |
 
-### Infrequent access example
+### Standard storage example 2
 
-If a user writes 1,000 objects in R2 infrequent access storage for 5 days with an average size of 1 GB and requests 1,000 times in 5 days, the estimated cost for the month would be:
+If a user has already stored 1,000 objects with an average size of 1 GB in R2 **Standard storage** in a previous month, and did not read any of the objects during the month, the estimated cost for the month would be:
 
-|                    | Usage                                       | Free Tier    | Billable Quantity | Price      |
-| ------------------ | ------------------------------------------- | ------------ | ----------------- | ---------- |
-| Class B Operations | (1,000 objects) \* (1,000 reads per object) | 10 million   | 0                 | $0.00      |
-| Class A Operations | (1,000 objects) \* (1 write per object)     | 1 million    | 0                 | $0.00      |
-| Storage            | (1,000 objects) \* (1 GB per object)        | 10 GB-months | 990 GB-months     | $14.85     |
-| Data retrieval     | (1,000 objects) \* (1 GB per object)        | 0 GB         | 1,000 GB          | $10.00     |
-| **TOTAL**          |                                             |              |                   | **$24.85** |
-|                    |                                             |              |                   |            |
+|                    | Usage                                       | Free Tier    | Billable Quantity | Price       |
+| ------------------ | ------------------------------------------- | ------------ | ----------------- | ----------- |
+| Class B Operations | 0                                           | 10 million   | 0                 | $0.00       |
+| Class A Operations | 0                                           | 1 million    | 0                 | $0.00       |
+| Storage            | (1,000 objects) \* (1 GB per object)        | 10 GB-months | 990 GB-months     | $14.85      |
+| Data retrieval     | 0                                           | 0 GB         | None              | $0.00       |
+| **TOTAL**          |                                             |              |                   | **$14.85**  |
 
-Note that the minimal storage duration for infrequent access storage is 30 days, which means the billable quantity is 990 GB-months, rather than 157 GB-months.
+### Infrequent access example 1
+
+If a user has already stored 1,000 objects with an average size of 1 GB in R2 **Infrequent Access storage** in a previous month, and did not read any of the objects during the month, the estimated cost for the month would be:
+
+|                    | Usage                                       | Free Tier    | Billable Quantity | Price       |
+| ------------------ | ------------------------------------------- | ------------ | ----------------- | ----------- |
+| Class B Operations | 0                                           | NA           | 0                 | $0.00       |
+| Class A Operations | 0                                           | NA           | 0                 | $0.00       |
+| Storage            | (1,000 objects) \* (1 GB per object)        | NA           | 1,000 GB-months   | $10.00      |
+| Data retrieval     | 0                                           | NA           | 0                 | $0.00       |
+| **TOTAL**          |                                             |              |                   | **$10.00**  |
+
+### Infrequent access example 2
+
+If a user writes 1,000 objects in R2 **Infrequent Access storage** for 5 days with an average size of 1 GB and requests 1,000 times in 5 days, the estimated cost for the month would be:
+
+|                    | Usage                                       | Free Tier    | Billable Quantity | Price       |
+| ------------------ | ------------------------------------------- | ------------ | ----------------- | ----------- |
+| Class B Operations | (1,000 objects) \* (1,000 reads per object) | NA           | 1 million         | $0.90       |
+| Class A Operations | (1,000 objects) \* (1 write per object)     | NA           | 1,000             | $9.00       |
+| Storage            | (1,000 objects) \* (1 GB per object)        | NA           | 1,000 GB-months   | $10.00      |
+| Data retrieval     | (1,000 objects) \* (1 GB per object)        | NA           | 1,000 GB          | $10.00      |
+| **TOTAL**          |                                             |              |                   | **$29.90**  |
+
+Note that the minimal storage duration for infrequent access storage is 30 days, which means the billable quantity is 1,000 GB-months, rather than 167 GB-months.
 
 ### Asset hosting
 
@@ -154,7 +180,6 @@ If a user writes 100,000 files with an average size of 100 KB object and reads 1
 | Class A Operations | (100,000 writes)                        | 1 million    | 0                 | $0.00       |
 | Storage            | (100,000 objects) \* (100KB per object) | 10 GB-months | 0 GB-months       | $0.00       |
 | **TOTAL**          |                                         |              |                   | **$104.40** |
-|                    |                                         |              |                   |             |
 
 ## Cloudflare billing policy
 
