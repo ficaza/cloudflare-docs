@@ -5,7 +5,7 @@ meta:
   title: Redirects | How we docs
 ---
 
-import { GlossaryTooltip } from "~/components";
+import { Details, GitHubCode, GlossaryTooltip } from "~/components";
 
 As your content changes (and it will change), <GlossaryTooltip term="redirect">redirects</GlossaryTooltip> preserve continuity for your users and (friendly) bots.
 
@@ -64,23 +64,29 @@ We have two automations in GitHub to help with redirects.
 
 An infinite redirect is when two pages keep redirecting to each other, trapping users in an infitnite loop that will crash their browser.
 
-Because that’s just a terrible experience, we explicitly check for that as part of our required `CI` GitHub action.
+Because that's just a terrible experience, we explicitly check for that as part of our [required `CI` GitHub action](https://github.com/cloudflare/cloudflare-docs/blob/production/.github/workflows/ci.yml#L62-L63).
 
-{/* {{ CI step — use GitHub code }} */}
+We trigger this check _after_ we build our site. What it does it then call [`validate-redirects.ts`](https://github.com/cloudflare/cloudflare-docs/blob/production/bin/validate-redirects.ts), which fails on:
 
-We trigger this check _after_ we build our site. What it does it then call this script.
+- Infinite redirects
+- Duplicate redirects
+- Redirect targets with anchor links in them
 
-{/* {{ Infinite redirects — use GitHub code }} */}
-
-{/* Talk through details of the script. */}
+<Details header="validate-redirects.ts">
+	<GitHubCode
+		repo="cloudflare/cloudflare-docs"
+		file="bin/validate-redirects.ts"
+		commit="f5339d91b62353eb1233a64b8ab00aaf8f40cdac"
+		lang="ts"
+		code={{ title: "validate-redirects.ts" }}
+	/>
+</Details>
 
 ### Potential redirects
 
-Contributors often struggle to know when they should add redirects. We try to help them by adding a comment to any pull requests that modify or delete content file paths.
+Contributors often struggle to know when they should add redirects. We try to help them by [adding a comment](https://github.com/cloudflare/cloudflare-docs/blob/production/.github/workflows/comment-changed-filenames.yml) to any pull requests that modify or delete content file paths.
 
-{/* Insert picture of comment */}
-
-{/* Talk through script */}
+![GitHub Actions redirect comment](~/assets/images/style-guide/how-we-docs/redirects-comment.png)
 
 ---
 
