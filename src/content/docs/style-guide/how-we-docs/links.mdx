@@ -5,7 +5,7 @@ meta:
   title: Links | How we docs
 ---
 
-import { Render } from "~/components";
+import { GitHubCode, Render } from "~/components";
 
 Though [links](/style-guide/documentation-content-strategy/component-attributes/links/) are an important part of documentation, they also have their own maintenance cost.
 
@@ -40,9 +40,18 @@ Of these three [link types](#link-types), only **Internal** links:
 - Universally lead to a bad customer experience (a `404` page).
 - Are easily auditable within the current context.
 
-For these reasons, we choose to **fail** a build based on broken internal links. For our implementation, we rely on the Starlight link validator plugin.
+For these reasons, we choose to **fail** a build based on broken internal links. For our implementation, we rely on the [Starlight link validator plugin](https://github.com/HiDeoo/starlight-links-validator).
 
-{/* Insert reference to astro.config.ts + links to starlight link plugin + CI build step */}
+<GitHubCode
+	repo="cloudflare/cloudflare-docs"
+	file="astro.config.ts"
+	commit="aaacc3c3c2a7517ee307ddfc56962cbea9847202"
+	lang="ts"
+	lines="129-153"
+	code={{ title: "astro.config.ts" }}
+/>
+
+Whether or not we run the link validation depends an environmental variable that we set in our [CI build process](https://github.com/cloudflare/cloudflare-docs/blob/production/.github/workflows/ci.yml#L52).
 
 We also make two intentional decisions about this link auditing:
 
@@ -59,4 +68,4 @@ We use an external SEO tool to help flag these broken external links for us, add
 
 Anchor links do not have as dramatic as consequences of being wrong as internal links. If you have a broken anchor link, a customer will either need to manually scroll to the header or - in some cases - go to another page.
 
-Because of these characteristics, we run periodic, background checks to flag broken anchor links, using the `htmltest` library.
+Because of these characteristics, we run [periodic, background checks](https://github.com/cloudflare/cloudflare-docs/blob/production/.github/workflows/anchor-link-audit.yml) to flag broken anchor links, using the `htmltest` library.
