@@ -37,7 +37,7 @@ Use JavaScript Detections API for more granular control over when and where Java
 
 You can explicitly add a script reference to `jsd/api.js` and your own code calling `window.cloudflare.jsd.executeOnce` on specific HTML pages of your website.
 
-:::warning
+:::caution
 It is not recommended to combine both approaches (zone-wide toggle and the manual injection). If you want to selectively deploy JavaScript Detections only on certain pages, disable JavaScript Detections via the Cloudflare dashboard and use the JSD API exclusively.
 :::
 

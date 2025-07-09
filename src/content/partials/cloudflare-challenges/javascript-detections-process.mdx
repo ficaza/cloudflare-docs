@@ -21,7 +21,7 @@ Once the JavaScript Detection is injected on the HTML page, the visitor's browse
 The `cf-clearance` cookie cannot exceed the maximum size of 4096 bytes.
 :::
 
-:::warning
+:::caution
 Enforcement against bots do **not** occur even if the cookie is flagged false. 
 
 You must enable JavaScript Detections and then create a custom WAF rule using the `cf.bot_management.js.detection.passed` field to block or challenge a failed request.
