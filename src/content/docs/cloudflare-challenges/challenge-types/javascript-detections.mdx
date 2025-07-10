@@ -40,7 +40,7 @@ The JavaScript Detections API allows you more granular control over when and whe
 You can explicitly add a script reference to `jsd/api.js` and your own code calling `window.cloudflare.jsd.executeOnce` on specific HTML pages of your website.
 
 :::caution
-It is not recommended to combine both approaches (zone-wide toggle and the manual injection). If you want to selectively deploy JavaScript Detections only on certain pages, disable JavaScript Detections via the Cloudflare dashboard and use the JSD API exclusively.
+It is not recommended to combine both approaches (zone-wide toggle and the manual injection). If you want to selectively deploy JavaScript Detections only on certain pages, disable JavaScript Detections via the Cloudflare dashboard and use the JavaScript Detections API exclusively.
 :::
 
 The following script must be added to every page that you wish to have JavaScript Detections enabled:
@@ -75,7 +75,7 @@ Customers who enabled Enterprise Bot Management before June 2020 do not have Jav
 
 ### If it is the first request to your website
 
-The first request from a new client to your website or application will generally not have JSD data (`cf.bot_management.js_detection.passed` = `false`). This is because Cloudflare needs at least one HTML request before injecting JavaScript detection and issuing the `cf-clearance` cookie. 
+The first request from a new client to your website or application will generally not have JavaScript Detections data (`cf.bot_management.js_detection.passed` = `false`). This is because Cloudflare needs at least one HTML request before injecting JavaScript Detection and issuing the `cf-clearance` cookie. 
 
 Subsequent requests can include a `cf-clearance` cookie if JavaScript ran successfully.
 
