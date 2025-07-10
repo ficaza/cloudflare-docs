@@ -33,7 +33,9 @@ Refer to the [WAF documentation](/waf/custom-rules/create-dashboard/) for more i
 
 ## API
 
-Use JavaScript Detections API for more granular control over when and where JavaScript Detections are injected on your website, as well as an option for callback handling (for logging or other additional actions).
+If you enable JavaScript Detections via the dashboard, Cloudflare will insert a script tag in all HTML pages served on your website. If you would prefer to limit where JavaScript Detections are served, you can do so with the JavaScript Detections API script.
+
+The JavaScript Detections API allows you more granular control over when and where JavaScript Detections are injected on your website, as well as an option for callback handling (for logging or other additional actions). 
 
 You can explicitly add a script reference to `jsd/api.js` and your own code calling `window.cloudflare.jsd.executeOnce` on specific HTML pages of your website.
 
@@ -60,9 +62,10 @@ function jsdOnload(){
 
 ## Considerations
 
-- While JavaScript Detections further refine the [bot score](/bots/concepts/bot-score/), it is not a very significant effect. 
-- If the JavaScript Detections injection or execution fails and `cf.bot_management.js_detection.passed` = `false`, a separate Bot Management heuristic can still yield a 1 or higher bot score, independent of JavaScript Detections.
-- Even if JavaScript Detections pass, the final bot score may still be 1 due to other detection heuristics (for example, known malicious IP, signature detection, and more), resulting in `js_detection.passed` = `true`, but `score` = 1.
+JavaScript Detections do not guarantee a specific bot score.
+
+- If the JavaScript Detections injection or execution fails and `cf.bot_management.js_detection.passed` = `false`, a separate Bot Management heuristic can still yield a 1 or higher bot score, independent of JavaScript Detections. 
+- If the JavaScript Detections pass, the final bot score may still be 1 due to other detection heuristics (for example, known malicious IP, signature detection, and more), resulting in `js_detection.passed` = `true`, but `score` = 1. 
 
 ## Limitations
 
