@@ -1,31 +1,35 @@
 ---
 pcx_content_type: concept
-title: DLP datasets
+title: Detection entries
 sidebar:
   order: 4
 ---
 
 import { Details } from "~/components";
 
-Cloudflare DLP can scan your web traffic and SaaS applications for specific data defined in a custom dataset. Sensitive data can be hashed before reaching Cloudflare and redacted from matches in [payload logs](/cloudflare-one/policies/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
+Cloudflare DLP can scan your web traffic and SaaS applications for specific data defined in a custom detection entry. Detection entries allow you to define custom data patterns for DLP to detect using [DLP profiles](/cloudflare-one/policies/data-loss-prevention/dlp-profiles/). Detection entries include custom [datasets](#datasets) and [documents](#documents).
 
-## DLP dataset types
+You can configure sensitive data to be hashed before reaching Cloudflare and redacted from matches in [payload logs](/cloudflare-one/policies/data-loss-prevention/dlp-policies/logging-options/#log-the-payload-of-matched-rules).
 
-### Exact Data Match
+## Datasets
+
+You can upload custom datasets to scan for specific matching data.
+
+### Dataset types
+
+#### Exact Data Match
 
 Exact Data Match (EDM) protects sensitive information, such as names, addresses, phone numbers, and credit card numbers.
 
 All data in uploaded EDM datasets is encrypted before reaching Cloudflare. To detect matches, Cloudflare hashes traffic and compares it to hashes from your dataset. Matched data will be redacted in payload logs.
 
-### Custom Wordlist
+#### Custom Wordlist
 
 Custom Wordlist (CWL) protects non-sensitive data, such as intellectual property and SKU numbers. Optionally, CWL can detect case-sensitive data.
 
 Cloudflare stores data from CWL datasets within DLP. Plaintext matches appear in payload logs.
 
-## Use DLP datasets
-
-### Prepare a dataset
+### Prepare DLP datasets
 
 #### Formatting
 
@@ -39,19 +43,17 @@ Column title cells may result in false positives in Custom Wordlist datasets and
 
 DLP will detect and use title cells as column names for Exact Data Match datasets. If multiple columns have the same name, DLP will append a number sign (`#`) and number to their names.
 
-:::tip[Update EDM datasets]
-
+:::caution[Update EDM datasets]
 To select which Exact Data Match columns to use, you will need to [reupload any EDM datasets](#manage-existing-datasets) added prior to column support.
-
 :::
 
 ### Upload a new dataset
 
 <Details header="Upload an Exact Data Match dataset">
 
-1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **DLP** > **DLP datasets**.
-2. Select **Create new dataset**.
-3. Choose **Exact Data Match**.
+1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **DLP** > **Detection entries**.
+2. Go to **Datasets**.
+3. Select **Add a dataset**, then choose **Exact Data Match**.
 4. Upload your dataset file. Select **Next**.
 5. Review and choose the detected columns you want to include. Select **Next**.
 6. Name your dataset. Optionally, add a description. Select **Next**.
@@ -63,9 +65,9 @@ DLP will encrypt your dataset and save its hash.
 
 <Details header="Upload a Custom Wordlist dataset">
 
-1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **DLP** > **DLP datasets**.
-2. Select **Create new dataset**.
-3. Choose **Custom Wordlist**.
+1. In [Zero Trust](https://one.dash.cloudflare.com/), go to **DLP** > **Detection entries**.
+2. Go to **Datasets**.
+3. Select **Add a dataset**, then choose **Custom Wordlist**.
 4. Name your dataset. Optionally, add a description.
 5. (Optional) In **Settings**, turn on **Enforce case sensitivity** to require matched values to contain exact capitalization.
 6. In **Upload file**, choose your dataset file.
@@ -90,7 +92,9 @@ Uploaded DLP datasets are read-only. To update a dataset, you must upload a new 
 Your new dataset will replace the original dataset.
 
 :::caution[Remove existing column entries]
-
 If you want to update an Exact Data Match dataset to remove a column in use as an [existing detection entry](/cloudflare-one/policies/data-loss-prevention/dlp-profiles/#build-a-custom-profile), you must remove the existing entry from any custom DLP profiles using it before updating the dataset.
-
 :::
+
+## Documents
+
+You can upload documents to scan for unstructured data or specific document types.
