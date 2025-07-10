@@ -15,7 +15,7 @@ JavaScript Detections have a lifespan of 15 minutes. However, the code is inject
 Once the JavaScript Detection is injected on the HTML page, the visitor's browser will run the JavaScript code snippet and a `cf-clearance` cookie is issued to the visitor. The information in JavaScript Detections is stored in the `cf-clearance` cookie and is used to populate `js_detection.passed`.
 
 - If the visitor is verified and a cf-clearance cookie is issued, it will contain the outcome: `cf.bot_management.js.detection.passed` = `true`
-- If the verification fails, the cookie with contain the outcome: `cf.bot_management.js.detection.passed` = `false` 
+- If the verification fails, the cookie will contain the outcome: `cf.bot_management.js.detection.passed` = `false` 
 
 :::note
 The `cf-clearance` cookie cannot exceed the maximum size of 4096 bytes.
