@@ -75,9 +75,9 @@ Customers who enabled Enterprise Bot Management before June 2020 do not have Jav
 
 ### If it is the first request to your website
 
-The first request from a new client to your website or application will generally not have JavaScript Detections data (`cf.bot_management.js_detection.passed` = `false`). This is because Cloudflare needs at least one HTML request before injecting JavaScript Detection and issuing the `cf-clearance` cookie. 
+The first request from a new client to your website or application will generally not have JavaScript Detections data (`cf.bot_management.js_detection.passed` = `false`). This is because Cloudflare needs at least one HTML request before injecting JavaScript Detection and issuing the `cf_clearance` cookie. 
 
-Subsequent requests can include a `cf-clearance` cookie if JavaScript ran successfully.
+Subsequent requests can include a `cf_clearance` cookie if JavaScript ran successfully.
 
 ### If you have a Content Security Policy (CSP)
 
