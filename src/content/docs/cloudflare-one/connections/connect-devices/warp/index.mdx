@@ -8,19 +8,49 @@ head:
     content: About Cloudflare WARP
 ---
 
+## About Cloudflare WARP
+
 The Cloudflare WARP client allows you to protect corporate devices by securely and privately sending traffic from those devices to Cloudflare's global network, where [Cloudflare Gateway](/cloudflare-one/policies/gateway/) can apply advanced web filtering. The WARP client also makes it possible to apply advanced [Zero Trust policies](/cloudflare-one/identity/devices/) that check for a device's health before it connects to corporate applications.
+
+## How WARP works
 
 WARP is a lightweight device client, which builds proxy tunnels using either Wireguard or MASQUE, and builds a DNS proxy using DNS-over-HTTPS. WARP supports all major operating systems, all common forms of endpoint management tooling, and has a robust series of management parameters and profiles to accurately scope the needs of a diverse user base.
 
-The Cloudflare WARP client comprises a user-friendly Graphical User Interface (GUI) and a background daemon (or service). The daemon is responsible for establishing the secure tunnel and managing all interactions between your device and Cloudflare's network, ensuring traffic protection and policy enforcement. The GUI serves as a control panel, allowing users to manage WARP's [status](/cloudflare-one/connections/connect-devices/warp/troubleshooting/connectivity-status/) and [settings](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-settings/).
+The WARP client comprises of:
 
-WARP has flexible [operating modes](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-modes/) and can control device traffic as a proxy, control device DNS traffic as a DNS proxy, or both. WARP is the most common method to send traffic from user devices to be filtered and decrypted by Cloudflare Gateway.
+- Graphical User Interface (GUI): User-friendly application you interact with. It provides a simple control panel to manage WARP's [status](/cloudflare-one/connections/connect-devices/warp/troubleshooting/connectivity-status/) and [settings](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-settings/).
+- WARP daemon (or service): Core background component responsible for establishing secure tunnels (using technologies like WireGuard or MASQUE) and managing all interactions with Cloudflare's network. It ensures traffic is securely directed and policies are enforced.
 
-Downloading and deploying the WARP client to your devices enhances the protection Cloudflare Zero Trust can provide to your users and data, wherever they are.
+## Key benefits of using WARP
 
-The WARP client provides in-depth protection for your organization in a few ways:
+Deploying the WARP client significantly enhances your organization's security and visibility within Cloudflare Zero Trust:
+
+**Security policies anywhere**: With the WARP client deployed in the Gateway with WARP mode, Gateway policies are not location-dependent — they can be enforced anywhere.
+
+**Advanced Web Filtering and Threat Protection**: Activate Gateway features for your device traffic, including:
+
+- [Anti-Virus scanning](/cloudflare-one/policies/gateway/http-policies/antivirus-scanning/)
+- [HTTP filtering](/cloudflare-one/policies/gateway/http-policies/)
+- [Browser Isolation](/cloudflare-one/policies/gateway/http-policies/#isolate)
+- [Identity-based policies](/cloudflare-one/policies/gateway/network-policies/)
+
+Deep Application Insights (Shadow IT Discovery): WARP provides granular visibility into application usage on corporate devices. This populates the Zero Trust Shadow IT Discovery dashboard, helping you identify, analyze, and manage unauthorized applications.
+
+Robust Device Posture Checks: Enhance your Zero Trust security by building rich device posture rules. WARP enables checks on device attributes like location, disk encryption status, and operating system version, allowing you to enforce policies based on device health before granting access to applications.
+
+Deploying the WARP client significantly enhances your organization's security and visibility within Cloudflare Zero Trust:
 
 - **WARP lets you enforce security policies anywhere**. With the WARP client deployed in the Gateway with WARP mode, Gateway policies are not location-dependent — they can be enforced anywhere.
 - **WARP lets you enforce HTTP filtering and user-based policies**. Download and install the WARP client to enable Gateway features such as [Anti-Virus scanning](/cloudflare-one/policies/gateway/http-policies/antivirus-scanning/), [HTTP filtering](/cloudflare-one/policies/gateway/http-policies/), [Browser Isolation](/cloudflare-one/policies/gateway/http-policies/#isolate), and [identity-based policies](/cloudflare-one/policies/gateway/network-policies/).
 - **WARP lets you have in-depth, application-specific insights**. With WARP installed on your corporate devices, you can populate the [Zero Trust Shadow IT Discovery](/cloudflare-one/insights/analytics/shadow-it-discovery/) page with visibility down to the application and user level. This makes it easy to discover, analyze, and take action on any shadow IT your users may be using every day.
 - **WARP allows you to build rich device posture rules.** The WARP client provides advanced Zero Trust protection by making it possible to check for [device posture](/cloudflare-one/identity/devices/). By setting up device posture checks, you can build Zero Trust policies that check for a device's location, disk encryption status, OS version, and more.
+
+## WARP operating modes
+
+WARP offers flexible [operating modes](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-modes/) to suit your specific needs. WARP can control device traffic as a full proxy, manage only DNS traffic as a DNS proxy, or both. WARP is the most common method for sending user device traffic through Cloudflare Gateway for filtering and decryption.
+
+## Next steps
+
+- Review the [first-time setup](/cloudflare-one/connections/connect-devices/warp/set-up-warp/) guide to [install](/cloudflare-one/connections/connect-devices/warp/download-warp/) and deploy[](/cloudflare-one/connections/connect-devices/warp/deployment/) the WARP client on your corporate devices
+- Configure your [WARP mode](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-modes/) and [settings](/cloudflare-one/connections/connect-devices/warp/configure-warp/warp-settings/) to best suit your organization's needs.
+- Explore [Cloudflare Gateway policies](/cloudflare-one/policies/gateway/) to leverage advanced web filtering, anti-virus scanning, and HTTP policies with WARP.
