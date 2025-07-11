@@ -7,7 +7,7 @@ import UsageList from "./UsageList.astro";
 const partials = await getPartialsUsage();
 ---
 
-<Details header="Partials" id="partials-container">
+<Details header="Usage" id="partials-container">
 	{
 		[...Object.entries(partials)]
 			.sort((a, b) => a[0].localeCompare(b[0]))

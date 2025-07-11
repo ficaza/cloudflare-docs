@@ -31,7 +31,12 @@ const { usage } = props.parse(Astro.props);
 							.replace("src/content/docs/", "")
 							.replace(".mdx", "")
 							.split("/")
-							.map((segment) => slug(segment))
+							.map((segment) => {
+								if (segment === "1.1.1.1") {
+									return segment;
+								}
+								return slug(segment);
+							})
 							.join("/") +
 						"/";
 
