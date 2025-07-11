@@ -37,7 +37,7 @@ If you enable JavaScript Detections via the dashboard, Cloudflare will insert a 
 
 The JavaScript Detections API allows you more granular control over when and where JavaScript Detections are injected on your website, as well as an option for callback handling (for logging or other additional actions). 
 
-You can explicitly add a script reference to `jsd/api.js` and your own code calling `window.cloudflare.jsd.executeOnce` on specific HTML pages of your website.
+You can explicitly add a script reference to `/cdn-cgi/challenge-platform/scripts/jsd/api.js` and your own code calling `window.cloudflare.jsd.executeOnce` on specific HTML pages of your website.
 
 :::caution
 It is not recommended to combine both approaches (zone-wide toggle and the manual injection). If you want to selectively deploy JavaScript Detections only on certain pages, disable JavaScript Detections via the Cloudflare dashboard and use the JavaScript Detections API exclusively.
@@ -59,6 +59,10 @@ function jsdOnload(){
 </script>
 <script src="/cdn-cgi/challenge-platform/scripts/jsd/api.js?onload=jsdOnload" async>
 ```
+
+:::note
+`result` = `success` or `error` only refers to the execution of JavaScript Detections. It does not indicate whether a visitor is a human or a bot. 
+:::
 
 ## Considerations
 
